@@ -15,7 +15,7 @@ chroma_db/
 tmp_uploads/
 
 # Screenshots / generated files
-screenshot/
+
 
 # IDE
 .vscode/
