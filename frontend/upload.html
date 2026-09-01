@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FinRAG — Select & Upload Your Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Animated gradient background + dotted surface mix -->
+  <div class="gradient-anim-bg">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+    <div class="blob b4"></div>
+    <div class="blob b5"></div>
+  </div>
+  <div id="dotted-bg" class="canvas-bg" style="background:transparent;"></div>
+  <div class="shader-glow-overlay"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <a href="index.html" class="brand">
+      <span class="logo-mark"><i class="fa-solid fa-chart-line"></i></span>
+      <span>Fin<b>RAG</b></span>
+    </a>
+    <nav class="main-nav">
+      <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Back to home</a>
+    </nav>
+    <span class="trust-badge"><i class="fa-solid fa-user"></i> <span id="user-name">Analyst</span></span>
+  </header>
+
+  <main class="upload-page">
+    <div class="upload-inner">
+
+      <div class="page-intro">
+        <span class="step-tag"><i class="fa-solid fa-list-check"></i> Step 2 of 3 · Select &amp; Upload</span>
+        <h1>Choose your document type</h1>
+        <p>Select the format of the file you want to analyze, then upload it. FinRAG will parse and index it for chat.</p>
+      </div>
+
+      <!-- File type selection cards -->
+      <div class="filetype-grid" id="filetype-grid">
+        <!-- injected by JS -->
+      </div>
+
+      <!-- Upload dropzone -->
+      <div class="upload-zone-wrap">
+        <div class="dropzone disabled" id="dropzone">
+          <div class="up-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+          <h3 id="dz-title">Select a file type first</h3>
+          <p id="dz-sub">Choose a document type above to enable upload</p>
+          <p class="hint" id="dz-hint"></p>
+          <input type="file" id="file-input" hidden />
+        </div>
+
+        <div class="file-list" id="file-list"></div>
+
+        <div class="upload-actions">
+          <button class="btn btn-primary btn-lg" id="continue-btn" disabled>
+            <i class="fa-solid fa-comments"></i> Continue to Chat
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js"></script>
+  <script src="js/shaders.js"></script>
+  <script src="js/upload.js"></script>
+  <script>
+    initDottedSurface('dotted-bg');
+    startGlowCycle();
+    initUpload();
+  </script>
+</body>
+</html>

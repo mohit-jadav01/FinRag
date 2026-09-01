@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FinRAG — Chat with Your Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css?v=3" />
+</head>
+
+<body>
+
+  <!-- Shader lines background -->
+  <div id="shader-lines-bg" class="shader-bg"></div>
+  <div class="shader-glow-overlay"></div>
+
+  <!-- Top bar -->
+  <header class="chat-topbar">
+    <a href="upload.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> New document</a>
+    <a href="index.html" class="brand">
+      <span class="logo-mark"><i class="fa-solid fa-chart-line"></i></span>
+      <span>Fin<b>RAG</b></span>
+    </a>
+    <span class="trust-badge"><i class="fa-solid fa-eye-slash"></i> No history saved</span>
+  </header>
+
+  <main class="chat-page">
+
+    <!-- Finance quote -->
+    <div class="chat-quote">
+      <div class="q-mark"><i class="fa-solid fa-quote-left"></i></div>
+      <blockquote id="finance-quote">
+        “An investment in <b>knowledge</b> pays the best interest.”
+      </blockquote>
+      <cite id="quote-author">— Benjamin Franklin</cite>
+    </div>
+
+    <!-- Uploaded file chips -->
+    <div class="file-chip-bar" id="file-chips"></div>
+
+    <!-- Chat shell -->
+    <section class="chat-shell">
+      <div class="chat-window" id="chat-window">
+        <!-- messages injected -->
+      </div>
+
+      <div class="chat-input-bar">
+        <textarea id="chat-input" rows="1" placeholder="Ask anything about your document..."></textarea>
+        <button class="send-btn" id="send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+      </div>
+
+      <div class="suggestions" id="suggestions">
+        <button class="suggestion">Summarize this document</button>
+        <button class="suggestion">What are the key figures?</button>
+        <button class="suggestion">Highlight any risks</button>
+        <button class="suggestion">Show revenue trends</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js"></script>
+  <script src="js/shaders.js?v=3"></script>
+  <script src="js/chat.js?v=3"></script>
+  <script>
+    initShaderLines('shader-lines-bg');
+    startGlowCycle();
+    initChat();
+  </script>
+</body>
+
+</html>

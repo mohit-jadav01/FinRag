@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FinRAG — Talk to Your Financial Documents</title>
+  <meta name="description"
+    content="FinRAG is an AI-powered RAG assistant that lets you upload financial documents and chat with them instantly. Secure, accurate, and lightning fast." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- Shader background -->
+  <div id="shader-bg" class="shader-bg"></div>
+  <div class="shader-glow-overlay"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <a href="index.html" class="brand">
+      <span class="logo-mark"><i class="fa-solid fa-chart-line"></i></span>
+      <span>Fin<b>RAG</b></span>
+    </a>
+    <nav class="main-nav">
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#trust">Security</a>
+      <a href="upload.html">Get Started</a>
+    </nav>
+    <button class="btn btn-white" id="open-login"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</button>
+  </header>
+
+  <!-- Hero -->
+  <main class="hero">
+    <span class="pill"><i class="fa-solid fa-sparkles"></i> Powered by Retrieval-Augmented Generation</span>
+    <h1>
+      <span class="italic">Talk to your</span><br />
+      <span class="grad">Financial Documents</span>
+    </h1>
+    <p class="lead">
+      Upload statements, reports, spreadsheets or filings — then simply ask.
+      FinRAG reads your data, grounds every answer in your files, and replies in
+      seconds. No more endless scrolling through PDFs.
+    </p>
+    <div class="hero-cta">
+      <button class="btn btn-primary btn-lg" id="hero-start"><i class="fa-solid fa-bolt"></i> Start for Free</button>
+      <a href="#how" class="btn btn-ghost btn-lg"><i class="fa-solid fa-circle-play"></i> See how it works</a>
+    </div>
+  </main>
+
+  <!-- Features -->
+  <section class="section" id="features">
+    <div class="section-head reveal">
+      <p class="eyebrow">What you get</p>
+      <h2>An assistant that actually reads your finances</h2>
+      <p>FinRAG combines secure document parsing with grounded AI answers — so every response is backed by your real
+        data, not guesswork.</p>
+    </div>
+    <div class="feature-grid">
+      <article class="feature-card reveal">
+        <div class="icon"><i class="fa-solid fa-file-shield"></i></div>
+        <h3>Grounded Answers</h3>
+        <p>Every reply is sourced directly from the documents you upload, with no hallucinated numbers or made-up
+          figures.</p>
+      </article>
+      <article class="feature-card reveal">
+        <div class="icon"><i class="fa-solid fa-layer-group"></i></div>
+        <h3>8+ File Formats</h3>
+        <p>PDF, Excel, CSV, JSON, SQLite, PowerPoint, HTML and plain text — bring whatever your finance stack produces.
+        </p>
+      </article>
+      <article class="feature-card reveal">
+        <div class="icon"><i class="fa-solid fa-bolt-lightning"></i></div>
+        <h3>Instant Insights</h3>
+        <p>Ask about cash flow, margins, line items or trends and get clear, conversational answers in moments.</p>
+      </article>
+      <article class="feature-card reveal">
+        <div class="icon"><i class="fa-solid fa-lock"></i></div>
+        <h3>Private by Design</h3>
+        <p>No chat history is stored. Your documents stay in your session and are never used to train anything.</p>
+      </article>
+      <article class="feature-card reveal">
+        <div class="icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+        <h3>Smart Retrieval</h3>
+        <p>RAG search pinpoints the most relevant passages across large files before crafting each answer.</p>
+      </article>
+      <article class="feature-card reveal">
+        <div class="icon"><i class="fa-solid fa-comments"></i></div>
+        <h3>Natural Chat</h3>
+        <p>A clean, distraction-free chat experience — ask follow-ups in plain English, just like talking to an analyst.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section" id="how">
+    <div class="section-head reveal">
+      <p class="eyebrow">Three simple steps</p>
+      <h2>How to use FinRAG</h2>
+      <p>From sign-in to insight in under a minute. No setup, no spreadsheets formulas, no training required.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="num">1</div>
+        <h3>Sign in</h3>
+        <p>Create your free account or log in to access your secure workspace instantly.</p>
+      </div>
+      <div class="step reveal">
+        <div class="num">2</div>
+        <h3>Pick &amp; upload</h3>
+        <p>Choose your file type — PDF, Excel, CSV and more — then drag &amp; drop your document.</p>
+      </div>
+      <div class="step reveal">
+        <div class="num">3</div>
+        <h3>Start chatting</h3>
+        <p>Ask anything about your data. FinRAG retrieves the answer straight from your file.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust -->
+  <section class="section" id="trust">
+    <div class="section-head reveal">
+      <p class="eyebrow">Built for trust</p>
+      <h2>Enterprise-grade reliability</h2>
+      <p>Thousands of analysts and finance teams rely on grounded AI to move faster — without compromising on accuracy.
+      </p>
+    </div>
+    <div class="stats reveal">
+      <div class="stat">
+        <div class="big">99.9%</div>
+        <div class="lbl">Source-grounded answers</div>
+      </div>
+      <div class="stat">
+        <div class="big">8+</div>
+        <div class="lbl">Supported file formats</div>
+      </div>
+      <div class="stat">
+        <div class="big">&lt;3s</div>
+        <div class="lbl">Average response time</div>
+      </div>
+      <div class="stat">
+        <div class="big">0</div>
+        <div class="lbl">Chat logs stored</div>
+      </div>
+    </div>
+    <div class="trust-badges reveal">
+      <span class="trust-badge"><i class="fa-solid fa-shield-halved"></i> End-to-end session privacy</span>
+      <span class="trust-badge"><i class="fa-solid fa-eye-slash"></i> No history retention</span>
+      <span class="trust-badge"><i class="fa-solid fa-circle-check"></i> Verifiable sources</span>
+      <span class="trust-badge"><i class="fa-solid fa-server"></i> No model training on your data</span>
+    </div>
+    <div style="text-align:center; margin-top:48px;" class="reveal">
+      <button class="btn btn-primary btn-lg" onclick="document.getElementById('open-login').click()">
+        <i class="fa-solid fa-rocket"></i> Get Started Now
+      </button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#trust">Security</a>
+      <a href="upload.html">Upload</a>
+    </div>
+    <p>© 2026 FinRAG. Grounded financial intelligence. All rights reserved.</p>
+  </footer>
+
+  <!-- ============ LOGIN / SIGNUP MODAL ============ -->
+  <div class="modal-overlay" id="auth-modal">
+    <div class="auth-card">
+      <!-- Visual side with animated characters -->
+      <div class="auth-visual">
+        <div class="av-brand">
+          <span class="dot"><i class="fa-solid fa-sparkles"></i></span>
+          <span>FinRAG</span>
+        </div>
+
+        <div class="characters">
+          <div class="char-stage" id="char-stage">
+            <div class="character char-purple">
+              <div class="eyes">
+                <span class="eye"><span class="pupil"></span></span>
+                <span class="eye"><span class="pupil"></span></span>
+              </div>
+            </div>
+            <div class="character char-black">
+              <div class="eyes">
+                <span class="eye"><span class="pupil"></span></span>
+                <span class="eye"><span class="pupil"></span></span>
+              </div>
+            </div>
+            <div class="character char-orange">
+              <div class="eyes">
+                <span class="pupil-only"></span>
+                <span class="pupil-only"></span>
+              </div>
+            </div>
+            <div class="character char-yellow">
+              <div class="eyes">
+                <span class="pupil-only"></span>
+                <span class="pupil-only"></span>
+              </div>
+              <span class="mouth"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="av-foot">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+
+      <!-- Form side -->
+      <div class="auth-form-wrap" style="position:relative;">
+        <button class="close-modal" id="close-auth"><i class="fa-solid fa-xmark"></i></button>
+
+        <div class="auth-head">
+          <h2 id="auth-title">Welcome back!</h2>
+          <p id="auth-sub">Please enter your details to continue</p>
+        </div>
+
+        <div class="auth-error" id="auth-error"></div>
+
+        <form id="auth-form" autocomplete="off">
+          <div class="field" id="name-field" style="display:none;">
+            <label for="name">Full name</label>
+            <div class="input-wrap">
+              <input type="text" id="name" placeholder="Jane Analyst" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <div class="input-wrap">
+              <input type="email" id="email" placeholder="jane@company.com" required />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <div class="input-wrap">
+              <input type="password" id="password" placeholder="••••••••" required />
+              <button type="button" class="toggle-pass" id="toggle-pass"><i class="fa-solid fa-eye"></i></button>
+            </div>
+          </div>
+
+          <div class="field-row" id="login-extra">
+            <label><input type="checkbox" id="remember" /> Remember for 30 days</label>
+            <a href="#">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-lg" id="auth-submit">Log in</button>
+        </form>
+
+        <div class="divider">or</div>
+
+        <button class="btn btn-ghost btn-block" type="button" id="google-btn">
+          <i class="fa-brands fa-google"></i> Continue with Google
+        </button>
+
+        <div class="auth-switch" id="auth-switch">
+          Don't have an account? <a href="#" id="switch-link">Sign Up</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js"></script>
+  <script src="js/shaders.js?v=3"></script>
+  <script src="js/main.js?v=3"></script>
+  <script>
+    initShaderAnimation('shader-bg');
+    startGlowCycle();
+    initLanding();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+python-multipart==0.0.9
+pydantic[email]==2.9.2
+python-dotenv==1.0.1
+
+# RAG stack
+langchain==0.3.1
+langchain-core==0.3.6
+langchain-community==0.3.1
+langchain-mistralai==0.2.0
+chromadb==0.5.5
+
+# File-type loaders
+pypdf==4.3.1
+openpyxl==3.1.5
+python-pptx==1.0.2

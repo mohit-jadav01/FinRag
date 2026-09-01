@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+venv/
+.env
+.env.*
+
+# Chroma / local database
+chroma_db/
+
+# Temporary uploads
+tmp_uploads/
+
+# Screenshots / generated files
+screenshot/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
