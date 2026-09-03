@@ -179,26 +179,23 @@ function initDottedSurface(containerId) {
 }
 
 /* -------- Shader glow pulse overlay --------
-   • Fires ONCE when user first opens the landing page.
-   • Fires again on every click anywhere on the landing page.
-   • No repeating 30 s timer — only those two triggers.
+   • Fires exactly ONCE when the user first opens the landing page:
+       – Pulse: 600 ms after load (gives the shader canvas time to render)
+   • No repeating timers — the overlay runs once and is done.
    ------------------------------------------------ */
 function startGlowCycle() {
   const overlay = document.querySelector('.shader-glow-overlay');
   if (!overlay) return;
 
-  let glowTimeout = null;
-
   function pulse() {
-    // Clear any pending fade-out so the glow resets cleanly on re-trigger
-    clearTimeout(glowTimeout);
+    overlay.classList.remove('active');
+    // Force reflow so re-adding the class re-triggers the CSS transition
+    void overlay.offsetWidth;
     overlay.classList.add('active');
-    glowTimeout = setTimeout(() => overlay.classList.remove('active'), 4000); // glow visible 4 s
+    // Fade out after 4 s
+    setTimeout(() => overlay.classList.remove('active'), 4000);
   }
 
-  // 1) Fire once when the user first arrives on the page
-  setTimeout(pulse, 600); // slight delay so the shader canvas has time to render
-
-  // 2) Fire on every click anywhere on the landing page (no 30 s auto-repeat)
-  document.addEventListener('click', pulse);
+  // Single pulse — shortly after page load, then done forever
+  setTimeout(pulse, 600);
 }

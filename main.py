@@ -287,7 +287,7 @@ def get_chat_model() -> ChatGroq:
     global _chat_model
     if _chat_model is None:
         _chat_model = ChatGroq(
-            model="qwen/qwen3-32b",  # Qwen 3.8 27B on Groq
+            model="qwen/qwen3.8-27b",  # Qwen 3.8 27B on Groq
             groq_api_key=get_groq_api_key(),
             temperature=0.3,
             max_tokens=2048,

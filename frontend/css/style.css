@@ -64,7 +64,7 @@ button {
   display: block;
 }
 
-/* The shader glow overlay that fires every 30s */
+/* The shader glow overlay — fires once on page load */
 .shader-glow-overlay {
   position: fixed;
   inset: 0;
@@ -107,32 +107,32 @@ button {
 
 .blob.b1 {
   background: radial-gradient(circle at center, rgba(18, 113, 255, 0.8), transparent 60%);
-  animation: moveVertical 30s ease infinite;
+  animation: moveVertical 30s ease 1 forwards;
 }
 
 .blob.b2 {
   background: radial-gradient(circle at center, rgba(108, 63, 245, 0.7), transparent 60%);
   transform-origin: calc(50% - 400px);
-  animation: moveInCircle 20s reverse infinite;
+  animation: moveInCircle 20s reverse 1 forwards;
 }
 
 .blob.b3 {
   background: radial-gradient(circle at center, rgba(6, 182, 212, 0.7), transparent 60%);
   transform-origin: calc(50% + 400px);
-  animation: moveInCircle 40s linear infinite;
+  animation: moveInCircle 40s linear 1 forwards;
 }
 
 .blob.b4 {
   background: radial-gradient(circle at center, rgba(249, 115, 22, 0.6), transparent 60%);
   transform-origin: calc(50% - 200px);
-  animation: moveHorizontal 40s ease infinite;
+  animation: moveHorizontal 40s ease 1 forwards;
   opacity: 0.4;
 }
 
 .blob.b5 {
   background: radial-gradient(circle at center, rgba(16, 185, 129, 0.6), transparent 60%);
   transform-origin: calc(50% - 800px) calc(50% + 800px);
-  animation: moveInCircle 25s ease infinite;
+  animation: moveInCircle 25s ease 1 forwards;
 }
 
 @keyframes moveHorizontal {
