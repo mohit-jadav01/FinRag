@@ -3,14 +3,14 @@
    ============================================ */
 
 const FILE_TYPES = [
-  { id: 'pdf',   name: 'PDF',         desc: 'Reports & filings',   icon: 'fa-file-pdf',        accept: '.pdf',          color: '#ef4444' },
-  { id: 'excel', name: 'Excel',       desc: '.xlsx / .xls',        icon: 'fa-file-excel',      accept: '.xlsx,.xls',    color: '#22c55e' },
-  { id: 'csv',   name: 'CSV',         desc: 'Comma-separated',     icon: 'fa-file-csv',        accept: '.csv',          color: '#10b981' },
-  { id: 'json',  name: 'JSON',        desc: 'Structured data',     icon: 'fa-file-code',       accept: '.json',         color: '#f59e0b' },
-  { id: 'sqlite',name: 'SQLite',      desc: 'Database file',       icon: 'fa-database',        accept: '.sqlite,.db',   color: '#06b6d4' },
-  { id: 'ppt',   name: 'PowerPoint',  desc: '.pptx / .ppt',        icon: 'fa-file-powerpoint', accept: '.pptx,.ppt',    color: '#f97316' },
-  { id: 'html',  name: 'HTML',        desc: 'Web template',        icon: 'fa-file-lines',      accept: '.html,.htm',    color: '#3b82f6' },
-  { id: 'text',  name: 'Text',        desc: 'Plain .txt',          icon: 'fa-file-alt',        accept: '.txt',          color: '#a78bfa' },
+  { id: 'pdf', name: 'PDF', desc: 'Reports & filings', icon: 'fa-file-pdf', accept: '.pdf', color: '#ef4444' },
+  { id: 'excel', name: 'Excel', desc: '.xlsx / .xls', icon: 'fa-file-excel', accept: '.xlsx,.xls', color: '#22c55e' },
+  { id: 'csv', name: 'CSV', desc: 'Comma-separated', icon: 'fa-file-csv', accept: '.csv', color: '#10b981' },
+  { id: 'json', name: 'JSON', desc: 'Structured data', icon: 'fa-file-code', accept: '.json', color: '#f59e0b' },
+  { id: 'sqlite', name: 'SQLite', desc: 'Database file', icon: 'fa-database', accept: '.sqlite,.db', color: '#06b6d4' },
+  { id: 'ppt', name: 'PowerPoint', desc: '.pptx / .ppt', icon: 'fa-file-powerpoint', accept: '.pptx,.ppt', color: '#f97316' },
+  { id: 'html', name: 'HTML', desc: 'Web template', icon: 'fa-file-lines', accept: '.html,.htm', color: '#3b82f6' },
+  { id: 'text', name: 'Text', desc: 'Plain .txt', icon: 'fa-file-alt', accept: '.txt', color: '#a78bfa' },
 ];
 
 let selectedType = null;
@@ -88,7 +88,7 @@ function realUpload(id, file) {
   form.append('file', file);
 
   const xhr = new XMLHttpRequest();
-  xhr.open('POST', '/api/upload');
+  xhr.open('POST', `${API_BASE_URL}/api/upload`);
   xhr.setRequestHeader('Authorization', 'Bearer ' + token);
 
   xhr.upload.addEventListener('progress', (e) => {
@@ -103,7 +103,7 @@ function realUpload(id, file) {
     const f = uploadedFiles.find(x => x.id === id);
     if (!f) return;
     let payload = {};
-    try { payload = JSON.parse(xhr.responseText); } catch (e) {}
+    try { payload = JSON.parse(xhr.responseText); } catch (e) { }
 
     if (xhr.status >= 200 && xhr.status < 300) {
       f.progress = 100;
@@ -138,8 +138,8 @@ function renderFiles() {
         <div class="f-info">
           <div class="f-name" title="${f.name}">${f.name}</div>
           ${f.error
-            ? `<div class="f-meta" style="color:#ef4444;">${f.error}</div>`
-            : `<div class="f-meta"><span>${fmtSize(f.size)}</span><span>${Math.round(f.progress)}%</span></div>
+        ? `<div class="f-meta" style="color:#ef4444;">${f.error}</div>`
+        : `<div class="f-meta"><span>${fmtSize(f.size)}</span><span>${Math.round(f.progress)}%</span></div>
                <div class="progress"><span style="width:${f.progress}%"></span></div>`}
         </div>
         <button class="f-action ${(!done && !f.error) ? 'spin' : ''}" data-id="${f.id}">
@@ -176,9 +176,12 @@ function initUpload() {
   try {
     const u = sessionStorage.getItem('finrag_user');
     if (u) document.getElementById('user-name').textContent = u;
-  } catch (e) {}
+  } catch (e) { }
 
-  fetch('/api/session', { headers: { Authorization: 'Bearer ' + token } })
+  fetch(`${API_BASE_URL}/api/session`, {
+    headers: { Authorization: 'Bearer ' + token },
+    credentials: 'include',
+  })
     .then(res => {
       if (!res.ok) throw new Error('session invalid');
       return res.json();
@@ -212,7 +215,7 @@ function initUpload() {
         uploadedFiles.map(f => ({ name: f.name, size: f.size }))
       ));
       sessionStorage.setItem('finrag_type', selectedType.id);
-    } catch (e) {}
+    } catch (e) { }
     window.location.href = 'chat.html';
   });
 }

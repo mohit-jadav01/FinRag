@@ -151,7 +151,9 @@ function initLanding() {
     submit.textContent = authMode === 'signup' ? 'Creating...' : 'Signing in...';
 
     try {
-      const endpoint = authMode === 'signup' ? '/api/signup' : '/api/login';
+      const endpoint = authMode === 'signup'
+        ? `${API_BASE_URL}/api/signup`
+        : `${API_BASE_URL}/api/login`;
       const body = authMode === 'signup'
         ? { name: document.getElementById('name').value.trim(), email, password: pass }
         : { email, password: pass };
@@ -159,6 +161,7 @@ function initLanding() {
       const res = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify(body),
       });
       const result = await res.json();
@@ -171,7 +174,7 @@ function initLanding() {
         sessionStorage.setItem('finrag_token', result.token);
         sessionStorage.setItem('finrag_user', result.name);
         sessionStorage.setItem('finrag_email', result.email);
-      } catch (e) {}
+      } catch (e) { }
 
       window.location.href = 'upload.html';
     } catch (err2) {

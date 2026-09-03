@@ -205,12 +205,13 @@ function renderMarkdown(md) {
 /* Real RAG call to the FastAPI backend (Mistral embeddings + chat model) */
 async function askBackend(question) {
   const token = sessionStorage.getItem('finrag_token');
-  const res = await fetch('/api/chat', {
+  const res = await fetch(`${API_BASE_URL}/api/chat`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + token,
     },
+    credentials: 'include',
     body: JSON.stringify({ message: question }),
   });
   const data = await res.json();
@@ -279,7 +280,11 @@ function initChat() {
 
   // confirm session + real uploaded files with the backend, and fire the
   // one-time welcome email on first chat entry
-  fetch('/api/chat/init', { method: 'POST', headers: { Authorization: 'Bearer ' + token } })
+  fetch(`${API_BASE_URL}/api/chat/init`, {
+    method: 'POST',
+    headers: { Authorization: 'Bearer ' + token },
+    credentials: 'include',
+  })
     .then(res => {
       if (!res.ok) throw new Error('session invalid');
       return res.json();
